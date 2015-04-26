@@ -1,0 +1,44 @@
+{
+  "name": "annotator-tokenauth",
+  "version": "1.0.0",
+  "description": "An extension module for Annotator that adds authentication information for the annotation store.",
+  "main": "browser.js",
+  "dependencies": {
+  	"jwt-simple": "^0.3.0",
+    "browserify-shim": "^3.8.5"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "chai": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.1.2",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.2.4"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "annotator": "global:annotator"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openannotation/annotator-tokenauth"
+  },
+  "keywords": [
+    "annotator",
+    "annotation",
+    "metadata"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/openannotation/annotator-tokenauth/issues"
+  },
+  "homepage": "https://github.com/openannotation/annotator-tokenauth"
+}
