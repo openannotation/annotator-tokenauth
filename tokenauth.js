@@ -17,12 +17,19 @@ TokenIdentityPolicy.prototype.setToken = function (token) {
     this.payload = jwt.decode(token, null, false);
 }
  
-var TokenAuthzPolicy = annotator.authz.AclAuthzPolicy.extend({
-    authorizedUserId: function (identity) {
-        var payload = jwt.decode(identity, null, false);
-        return payload.userId;
-    }
-});
+
+function TokenAuthzPolicy () {
+    annotator.authz.AclAuthzPolicy.call(this);
+}
+
+TokenAuthzPolicy.prototype = Object.create(annotator.authz.AclAuthzPolicy.prototype);
+TokenAuthzPolicy.prototype.constructor = annotator.authz.AclAuthzPolicy;
+
+TokenAuthzPolicy.prototype.authorizedUserId = function (identity) {
+    var payload = jwt.decode(identity, null, false);
+    return payload.userId;
+};
+
  
 var tokenauth = function (options) {
     options = options || {
